@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>First Web Application</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Add and update todo page for <span th:text="${username}"/></h3>
+
+            <form method="post" th:object="${todo}">
+                <fieldset>
+                    <label>Description</label>
+                    <input type="text" th:field="*{description}" class="form-control" required="required"/>
+                    <div class="alert alert-danger" th:errors="*{description}">[error]</div>
+                </fieldset>
+               
+                <button type="submit" class="btn btn-success">Add todo</button>
+            </form>
+
+            <script type="text/javascript" 
+            th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+            <script type="text/javascript" 
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        </div>
+    </body>
+</html>

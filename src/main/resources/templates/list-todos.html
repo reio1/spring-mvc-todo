@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>First Web Application</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" 
+              th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+    </head>
+    <body>
+        <div class="container">
+            <h3>List of todo's for <span th:text="${username}"/></h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Description</th>
+                    <th>Target date</th>
+                    <th>Done</th>
+                    <th>Delete</th>
+                </tr>
+                <tr th:each="todo: ${todos}">
+                    <td th:text="${todo.description}" />
+                    <td th:text="${todo.target}" />
+                    <td th:text="${todo.isDone}" />
+                    <td><a class="btn btn-warning" th:href="@{'/delete-todo/' + ${todo.id}}">Delete</a></td>
+                </tr>
+            </table>
+
+            <div class="button">
+                <a href="/add-todo">Add a todo</a>
+            </div>
+
+            <script type="text/javascript" 
+            th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+            <script type="text/javascript" 
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+        </div>
+    </body>
+</html>
